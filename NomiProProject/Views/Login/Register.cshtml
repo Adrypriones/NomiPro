@@ -1,0 +1,55 @@
+﻿
+@{@model NomiProProject.Models.Usuario
+/**/
+
+ViewBag.Title = "Register";
+Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Register</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="full-box login-container cover">
+
+        <div class="logInForm">
+
+            <div class="text-center">
+                <h4 class="text-uppercase font-bold mb-0">Registro</h4>
+            </div>
+
+            @using (Html.BeginForm("Save", "Login", FormMethod.Post))
+            {
+
+                <div class="form-group label-floating">
+                    @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", required = "required" })
+                </div>
+
+                <div class="form-group label-floating">
+                    @Html.LabelFor(model => model.Contrasena, htmlAttributes: new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.Contrasena, new { @class = "form-control", required = "required", @type = "password" })
+                </div>
+
+                <div class="text-center">
+                    <div class="margin-top: 20px">
+                        <input type="submit" value="Registrar" class="btn btn-info btn-raised btn-sm" />
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>

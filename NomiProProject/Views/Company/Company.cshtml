@@ -1,0 +1,101 @@
+﻿
+@using NomiProProject.Shared.Enums
+
+
+@{@model NomiProProject.Models.Cargo
+/**/
+
+
+ViewBag.Title = "Company";}
+
+<!-- Content page-->
+<section>
+    <div class="container-fluid">
+        <div class="page-header">
+            <h1 class="text-titles"><i class="zmdi zmdi-balance"></i> Información Empresa <small>NomiPro</small></h1>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <ul class="breadcrumb breadcrumb-tabs">
+            <li>
+                <a href="@Url.Action("Index", "Employee")" class="btn btn-info" style="color:#000000">
+                    <i class="zmdi zmdi-plus"></i> &nbsp; NUEVO EMPLEADO
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("ListEmployee", "Employee")" class="btn btn-success" style="color:#000000">
+                    <i class="zmdi zmdi-format-list-bulleted"></i> &nbsp; LISTA DE EMPLEADOS
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("SearchEmployee", "Employee")" class="btn btn-primary" style="color:#000000">
+                    <i class="zmdi zmdi-search"></i> &nbsp; BUSCAR EMPLEADO
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("Position", "Position")" class="btn btn-danger" style="color:#000000">
+                    <i class="zmdi zmdi-comment-list"></i> &nbsp; LISTA  DE CARGOS
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Panel nuevo administrador -->
+    <div class="container-fluid">
+        <div class="panel panel-info">
+            <div class="panel-heading" style="color:#000000">
+                <h3 class="panel-title"><i class="zmdi zmdi-balance"></i> &nbsp; EMPRESA </h3>
+            </div>
+            <div class="panel-body" style="overflow-y:scroll; height:330px">
+                @using (Html.BeginForm("Guardar", "Company", FormMethod.Post))
+                 {
+                    @Html.AntiForgeryToken()
+
+                   <fieldset>
+                        <legend><i class="zmdi zmdi-info"></i> &nbsp; INFORMACIÓN EMPRESA </legend>
+                        <div class="container-fluid">
+                            <div class="row">
+
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.Descripción_Cargo, htmlAttributes: new { @class = "control-label" })
+                                        @Html.TextBoxFor(model => model.Descripción_Cargo, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.Rango_Minimo_Salario, htmlAttributes: new { @class = "control-label" })
+                                        @Html.TextBoxFor(model => model.Rango_Minimo_Salario, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-6">
+                                    <div class="form-group label-floating">
+                                        @Html.LabelFor(model => model.Rango_Maximo_Salario, htmlAttributes: new { @class = "control-label" })
+                                        @Html.TextBoxFor(model => model.Rango_Maximo_Salario, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                
+
+                            </div>
+                                <div class="text-center">
+                                    <div class="margin-top: 20px">
+                                        <input type="submit" value="Guardar" class="btn btn-info btn-raised btn-sm" />
+                                    </div>
+                                </div>
+
+                     </div>
+                       
+                  </fieldset>
+                 }
+          </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+

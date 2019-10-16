@@ -1,0 +1,69 @@
+﻿
+@{@model NomiProProject.Models.Usuario
+
+ViewBag.Title = "Login";
+Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>LogIn</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="full-box login-container cover">
+        <form action="@Url.Action("Authenticate", "Login")" method="post" autocomplete="off" class="logInForm">
+            <p class="text-center text-muted"><i class="zmdi zmdi-account-circle zmdi-hc-5x"></i></p>
+            <p class="text-center text-muted text-uppercase">INICIAR SESIÓN CON TU CUENTA</p>
+            <div class="form-group label-floating">
+                @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", required = "required" })
+            </div>
+
+
+            <div class="form-group label-floating">
+                @Html.LabelFor(model => model.Contrasena, htmlAttributes: new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.Contrasena, new { @class = "form-control", required = "required", @type = "password" })
+            </div>
+
+
+            <div>
+                <div class="col-xs-12">
+                    <div>
+                        <input id="checkbox-signup" type="checkbox">
+                        <label for="checkbox-signup">
+                            Recuerda
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group text-center">
+                <input type="submit" value="INICIAR" class="btn btn-info" style="color: #FFF;">
+            </div>
+
+            <div class="form-group m-t-30 mb-0">
+                <div class="col-sm-12">
+                    <a href="@Url.Action("ResetPassword", "Login")" class="text-muted"  style="color:#FFF"><i class="fa fa-lock m-r-5" ></i> ¿Olvidaste tu contraseña?</a>
+                </div>
+            </div> 
+
+        </form>
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <p class="text-muted" style="color:#FFF"> ¿No tienes cuenta? <a href="@Url.Action("Register", "Login")" class="text-primary m-l-5" style="color:#00ffff"><b>Regístrate</b></a></p>
+            </div>
+        </div>
+
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>
+

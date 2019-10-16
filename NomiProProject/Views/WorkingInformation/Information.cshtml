@@ -1,0 +1,132 @@
+﻿@using NomiProProject.Shared.Enums
+
+@{@model NomiProProject.ViewModel.EmployeeInformationViewModel
+
+ViewBag.Title = "Information";}
+
+
+
+<body>
+
+    <section>
+        <div class="container-fluid">
+            <div class="page-header">
+                <h1 class="text-titles"><i class="zmdi zmdi-account zmdi-hc-fw"></i> Información Laboral <small>NomiPro</small></h1>
+            </div>
+        </div>
+
+
+        <div class="panel panel-success" ,class="col-xl-3 col-md-6">
+            <div class="panel-heading" style="color:#000000">
+                <h3 class="panel-title"><i class="zmdi zmdi-male-female"></i> &nbsp; Informacion Empleado</h3>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-6 col-sm-3">
+                <div class="control-group">
+                    <div class="controls">
+                        @Html.LabelFor(model => model.Numero_Documento, htmlAttributes: new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.Numero_Documento, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6 col-sm-3">
+                <div class="control-group">
+                    <div class="controls">
+                        @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-6 col-sm-3">
+                <div class="control-group">
+                    <div class="controls">
+                        @Html.LabelFor(model => model.Apellido, htmlAttributes: new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.Apellido, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div class="panel-body" style="overflow-y:scroll; height:330px">
+            @using (Html.BeginForm("Guardar", "WorkingInformation", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="row">
+
+                    <div class="container-fluid">
+                        <div class="row">
+
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group label-floating">
+                                    @Html.LabelFor(model => model.Id_Cargo, htmlAttributes: new { @class = "control-label" })
+                                    @Html.DropDownListFor(x => Model.Id_Cargo, new SelectList(Model.Cargos, "Value", "Text"), htmlAttributes: new { @class = "form-control", id = "Cargo" })
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group label-floating">
+                                    @Html.LabelFor(model => model.Salario_Basico, htmlAttributes: new { @class = "control-label" })
+                                    @Html.TextBoxFor(model => model.Salario_Basico, new { @class = "form-control" })
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group label-floating">
+                                    @Html.LabelFor(model => model.Id_Jornada, htmlAttributes: new { @class = "control-label" })
+                                    @Html.DropDownListFor(x => Model.Id_Jornada, new SelectList(Model.Jornada, "Value", "Text"), htmlAttributes: new { @class = "form-control", id = "Jornada" })
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group label-floating">
+                                    @Html.LabelFor(model => model.TipoContrato, htmlAttributes: new { @class = "control-label" })
+                                    @Html.DropDownListFor(model => model.TipoContrato, new SelectList(Enum.GetValues(typeof(ContractType))),
+                                            "", new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group label-floating">
+                                    @Html.LabelFor(model => model.Fecha_Inicio, htmlAttributes: new { @class = "control-label" })
+                                    @Html.TextBoxFor(model => model.Fecha_Inicio, new { @class = "form-control", required = "required", @type = "Date" })
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group label-floating">
+                                    @Html.LabelFor(model => model.Fecha_Terminacion, htmlAttributes: new { @class = "control-label" })
+                                    @Html.TextBoxFor(model => model.Fecha_Terminacion, new { @class = "form-control", @type = "Date" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-center">
+                            <div class="margin-top: 20px">
+                                <input type="submit" value="Guardar" class="btn btn-success btn-raised btn-sm" style="color:#000000" />
+
+                            </div>
+                        </div>
+
+                        <a href="@Url.Action("Index", "Employee")" class="btn btn-info" style="color:#000000">
+                            <i class="zmdi zmdi-arrow-left"></i> &nbsp; Volver
+                        </a>
+
+                        @Html.HiddenFor(model => model.Id_Empleado)
+
+                    </div>
+
+                </div>
+
+
+            }
+
+        </div>
+    </section>
+
+
+</body>

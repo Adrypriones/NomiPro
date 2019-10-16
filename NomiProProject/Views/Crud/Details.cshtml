@@ -1,0 +1,84 @@
+﻿
+@{@model NomiProProject.Models.Empleado
+
+ViewBag.Title = "Details";
+}
+
+
+<div class="container-fluid">
+    <div class="page-header">
+        <h1 class="text-titles"><i class="zmdi zmdi-account zmdi-hc-fw"></i> Empleado <small>NomiPro</small></h1>
+    </div>
+</div>
+
+<div class="form-horizontal">
+    <div class="panel-heading">
+        <h3 class="panel-title"><i class="zmdi zmdi-border-color"></i>&nbsp; DETALLE EMPLEADO </h3>
+    </div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Documento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Documento)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Numero_Documento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Numero_Documento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Apellido)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Apellido)
+        </dd>
+
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Genero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Genero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+    </dl>
+</div>
+
+<li>
+
+    <a href="@Url.Action("ListEmployee", "Employee")" class="btn btn-success" style="color:#000000">
+        <i class="zmdi zmdi-arrow-left"></i> &nbsp; Volver
+    </a>
+
+    <a href="@Url.Action("Edit", "Crud", new { id= Model.ID_Empleado })" class="btn btn-info" style="color:#000000">
+        <i class="zmdi zmdi-border-color"></i> &nbsp; Editar
+    </a>
+
+</li>
+    
+

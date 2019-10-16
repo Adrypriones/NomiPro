@@ -1,0 +1,66 @@
+﻿
+
+@{@model NomiProProject.Models.Cargo
+
+ViewBag.Title = "PositionEdit";
+}
+
+<div class="container-fluid">
+    <div class="page-header">
+        <h1 class="text-titles"><i class="zmdi zmdi-account zmdi-hc-fw"></i> Lista Cargos <small>NomiPro</small></h1>
+    </div>
+</div>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div class="panel-heading">
+            <h3 class="panel-title"><i class="zmdi zmdi-border-color"></i>&nbsp; EDITAR CARGO </h3>
+        </div>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        
+            <div class="form-group">
+                @Html.LabelFor(model => model.Descripción_Cargo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Descripción_Cargo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Descripción_Cargo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Rango_Minimo_Salario, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Rango_Minimo_Salario, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Rango_Minimo_Salario, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Rango_Maximo_Salario, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Rango_Maximo_Salario, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Rango_Maximo_Salario, "", new { @class = "text-danger" })
+                </div>
+            </div>      
+
+                        
+
+            @Html.HiddenFor(model => model.ID_Cargo)        
+
+        <div class="text-center">
+            <div class="margin-top: 20px">
+                <input type="submit" value="Guardar" class="btn btn-info btn-raised btn-sm" />
+            </div>
+        </div>
+    </div>
+}
+
+<li>
+    <a href="@Url.Action("Position", "Position")" class="btn btn-info" style="color:#000000">
+        <i class="zmdi zmdi-arrow-left"></i> &nbsp; Volver
+    </a>
+</li>

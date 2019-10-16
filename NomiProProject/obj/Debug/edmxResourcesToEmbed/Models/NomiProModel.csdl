@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NomiProModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cargo">
+    <Key>
+      <PropertyRef Name="ID_Cargo" />
+    </Key>
+    <Property Name="ID_Cargo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Descripción_Cargo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Rango_Minimo_Salario" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="Rango_Maximo_Salario" Type="Decimal" Precision="10" Scale="2" />
+    <NavigationProperty Name="Cargo_Empleado" Relationship="NomiProModel.FK__Cargo_Emp__ID_Ca__4BAC3F29" FromRole="Cargo" ToRole="Cargo_Empleado" />
+  </EntityType>
+  <EntityType Name="Jornada">
+    <Key>
+      <PropertyRef Name="ID_Jornada" />
+    </Key>
+    <Property Name="ID_Jornada" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Horario_inicio" Type="Time" Precision="3" />
+    <Property Name="Horario_Final" Type="Time" Precision="3" />
+    <Property Name="Nombre" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Cargo_Empleado" Relationship="NomiProModel.FK_Cargo_Empleado_Jornada" FromRole="Jornada" ToRole="Cargo_Empleado" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="CodigoUsuario" />
+    </Key>
+    <Property Name="CodigoUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Contrasena" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Recuerdame" Type="Boolean" />
+  </EntityType>
+  <EntityContainer Name="NomiProEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cargoes" EntityType="Self.Cargo" />
+    <EntitySet Name="Jornadas" EntityType="Self.Jornada" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuario" />
+    <EntitySet Name="Cargo_Empleado" EntityType="NomiProModel.Cargo_Empleado" />
+    <AssociationSet Name="FK__Cargo_Emp__ID_Ca__4BAC3F29" Association="NomiProModel.FK__Cargo_Emp__ID_Ca__4BAC3F29">
+      <End Role="Cargo" EntitySet="Cargoes" />
+      <End Role="Cargo_Empleado" EntitySet="Cargo_Empleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cargo_Empleado_Jornada" Association="NomiProModel.FK_Cargo_Empleado_Jornada">
+      <End Role="Jornada" EntitySet="Jornadas" />
+      <End Role="Cargo_Empleado" EntitySet="Cargo_Empleado" />
+    </AssociationSet>
+    <EntitySet Name="Empleadoes" EntityType="NomiProModel.Empleado" />
+    <EntitySet Name="Nominas" EntityType="NomiProModel.Nomina" />
+    <AssociationSet Name="FK__Cargo_Emp__ID_Em__4CA06362" Association="NomiProModel.FK__Cargo_Emp__ID_Em__4CA06362">
+      <End Role="Empleado" EntitySet="Empleadoes" />
+      <End Role="Cargo_Empleado" EntitySet="Cargo_Empleado" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Nomina_Empleado" Association="NomiProModel.FK_Nomina_Empleado">
+      <End Role="Empleado" EntitySet="Empleadoes" />
+      <End Role="Nomina" EntitySet="Nominas" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Cargo_Empleado">
+    <Key>
+      <PropertyRef Name="ID_Cargo_Empleado" />
+    </Key>
+    <Property Name="ID_Cargo_Empleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_Cargo" Type="Int32" Nullable="false" />
+    <Property Name="ID_Empleado" Type="Int32" Nullable="false" />
+    <Property Name="Fecha_Inicio" Type="DateTime" Precision="3" />
+    <Property Name="Fecha_Terminación" Type="DateTime" Precision="3" />
+    <Property Name="ID_Jornada" Type="Int32" Nullable="false" />
+    <Property Name="TipoContrato" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Salario_Basico" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+    <NavigationProperty Name="Cargo" Relationship="NomiProModel.FK__Cargo_Emp__ID_Ca__4BAC3F29" FromRole="Cargo_Empleado" ToRole="Cargo" />
+    <NavigationProperty Name="Jornada" Relationship="NomiProModel.FK_Cargo_Empleado_Jornada" FromRole="Cargo_Empleado" ToRole="Jornada" />
+    <NavigationProperty Name="Empleado" Relationship="NomiProModel.FK__Cargo_Emp__ID_Em__4CA06362" FromRole="Cargo_Empleado" ToRole="Empleado" />
+  </EntityType>
+  <Association Name="FK__Cargo_Emp__ID_Ca__4BAC3F29">
+    <End Type="NomiProModel.Cargo" Role="Cargo" Multiplicity="1" />
+    <End Type="NomiProModel.Cargo_Empleado" Role="Cargo_Empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cargo">
+        <PropertyRef Name="ID_Cargo" />
+      </Principal>
+      <Dependent Role="Cargo_Empleado">
+        <PropertyRef Name="ID_Cargo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cargo_Empleado_Jornada">
+    <End Type="NomiProModel.Jornada" Role="Jornada" Multiplicity="1" />
+    <End Type="NomiProModel.Cargo_Empleado" Role="Cargo_Empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Jornada">
+        <PropertyRef Name="ID_Jornada" />
+      </Principal>
+      <Dependent Role="Cargo_Empleado">
+        <PropertyRef Name="ID_Jornada" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Empleado">
+    <Key>
+      <PropertyRef Name="ID_Empleado" />
+    </Key>
+    <Property Name="ID_Empleado" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Documento" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="Numero_Documento" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Apellido" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Genero" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Estado" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Cargo_Empleado" Relationship="NomiProModel.FK__Cargo_Emp__ID_Em__4CA06362" FromRole="Empleado" ToRole="Cargo_Empleado" />
+    <NavigationProperty Name="Nominas" Relationship="NomiProModel.FK_Nomina_Empleado" FromRole="Empleado" ToRole="Nomina" />
+  </EntityType>
+  <EntityType Name="Nomina">
+    <Key>
+      <PropertyRef Name="ID_Nomina" />
+    </Key>
+    <Property Name="ID_Nomina" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Total_Horas_Laboradas" Type="Int32" Nullable="false" />
+    <Property Name="Extras_Diurnas" Type="Int32" />
+    <Property Name="Extras_Nocturnas" Type="Int32" />
+    <Property Name="Fecha_Inicial_Pago" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Fecha_Final_Pago" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ID_Empleado" Type="Int32" />
+    <NavigationProperty Name="Empleado" Relationship="NomiProModel.FK_Nomina_Empleado" FromRole="Nomina" ToRole="Empleado" />
+    <Property Name="Aporte_Salud" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+    <Property Name="Aporte_Pension" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+  </EntityType>
+  <Association Name="FK__Cargo_Emp__ID_Em__4CA06362">
+    <End Type="NomiProModel.Empleado" Role="Empleado" Multiplicity="1" />
+    <End Type="NomiProModel.Cargo_Empleado" Role="Cargo_Empleado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="ID_Empleado" />
+      </Principal>
+      <Dependent Role="Cargo_Empleado">
+        <PropertyRef Name="ID_Empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Nomina_Empleado">
+    <End Type="NomiProModel.Empleado" Role="Empleado" Multiplicity="0..1" />
+    <End Type="NomiProModel.Nomina" Role="Nomina" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Empleado">
+        <PropertyRef Name="ID_Empleado" />
+      </Principal>
+      <Dependent Role="Nomina">
+        <PropertyRef Name="ID_Empleado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

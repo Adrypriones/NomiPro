@@ -1,0 +1,79 @@
+﻿@{@model NomiProProject.ViewModel.SearchEmployeeViewModel
+
+
+ViewBag.Title = "SearchEmployee";
+}
+
+<body>
+    <section>
+        <!-- Content page -->
+        <div class="container-fluid">
+            <div class="page-header">
+                <h1 class="text-titles"><i class="zmdi zmdi-account zmdi-hc-fw"></i> Employee <small>NomiPro</small></h1>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <ul class="breadcrumb breadcrumb-tabs">
+                <li>
+                    <a href="@Url.Action("NewEmployee", "Employee")" class="btn btn-info" style="color:#000000">
+                        <i class="zmdi zmdi-plus"></i> &nbsp; NUEVO EMPLEADO
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("ListEmployee", "Employee")" class="btn btn-success" style="color:#000000">
+                        <i class="zmdi zmdi-format-list-bulleted"></i> &nbsp; LISTA DE EMPLEADOS
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("SearchEmployee", "Employee")" class="btn btn-primary" style="color:#000000">
+                        <i class="zmdi zmdi-search"></i> &nbsp; BUSCAR EMPLEADO
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Position", "Position")" class="btn btn-danger" style="color:#000000">
+                        <i class="zmdi zmdi-comment-list"></i> &nbsp; LISTA  DE CARGOS
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="container-fluid">
+            @using (Html.BeginForm("Buscar", "Employee", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="col-xs-12 col-sm-6">
+                    <div class="form-group label-floating">
+                        @Html.LabelFor(model => model.Numero_Documento, htmlAttributes: new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.Numero_Documento, new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <form class="well">
+                    <div class="row">
+
+                        <div class="col-xs-12">
+                            <p class="text-center">
+                                <button type="submit" id="boton" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary btn-raised btn-sm "><i class="zmdi zmdi-search"></i> &nbsp; Buscar</button>
+                            </p>
+
+
+                        </div>
+                    </div>
+                </form>
+            }
+        </div>
+
+        @if (!string.IsNullOrEmpty(@ViewBag.Error))
+        {
+            <div class="alert alert-danger" style="color:#000000" align="center" >
+                <strong>@ViewBag.Error</strong>
+            </div>
+        }
+    </section>
+
+
+
+</body>
+

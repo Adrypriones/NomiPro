@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NomiProModelStoreContainer" CdmEntityContainer="NomiProEntities">
+    <EntitySetMapping Name="Cargoes">
+      <EntityTypeMapping TypeName="NomiProModel.Cargo">
+        <MappingFragment StoreEntitySet="Cargo">
+          <ScalarProperty Name="ID_Cargo" ColumnName="ID_Cargo" />
+          <ScalarProperty Name="Descripción_Cargo" ColumnName="Descripción_Cargo" />
+          <ScalarProperty Name="Rango_Minimo_Salario" ColumnName="Rango_Minimo_Salario" />
+          <ScalarProperty Name="Rango_Maximo_Salario" ColumnName="Rango_Maximo_Salario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Jornadas">
+      <EntityTypeMapping TypeName="NomiProModel.Jornada">
+        <MappingFragment StoreEntitySet="Jornada">
+          <ScalarProperty Name="ID_Jornada" ColumnName="ID_Jornada" />
+          <ScalarProperty Name="Horario_inicio" ColumnName="Horario_inicio" />
+          <ScalarProperty Name="Horario_Final" ColumnName="Horario_Final" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="NomiProModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="NomiProModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="CodigoUsuario" ColumnName="CodigoUsuario" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+          <ScalarProperty Name="Recuerdame" ColumnName="Recuerdame" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cargo_Empleado">
+      <EntityTypeMapping TypeName="NomiProModel.Cargo_Empleado">
+        <MappingFragment StoreEntitySet="Cargo_Empleado">
+          <ScalarProperty Name="Salario_Basico" ColumnName="Salario_Basico" />
+          <ScalarProperty Name="TipoContrato" ColumnName="TipoContrato" />
+          <ScalarProperty Name="ID_Jornada" ColumnName="ID_Jornada" />
+          <ScalarProperty Name="Fecha_Terminación" ColumnName="Fecha_Terminación" />
+          <ScalarProperty Name="Fecha_Inicio" ColumnName="Fecha_Inicio" />
+          <ScalarProperty Name="ID_Empleado" ColumnName="ID_Empleado" />
+          <ScalarProperty Name="ID_Cargo" ColumnName="ID_Cargo" />
+          <ScalarProperty Name="ID_Cargo_Empleado" ColumnName="ID_Cargo_Empleado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Empleadoes">
+      <EntityTypeMapping TypeName="NomiProModel.Empleado">
+        <MappingFragment StoreEntitySet="Empleado">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Genero" ColumnName="Genero" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Numero_Documento" ColumnName="Numero_Documento" />
+          <ScalarProperty Name="Documento" ColumnName="Documento" />
+          <ScalarProperty Name="ID_Empleado" ColumnName="ID_Empleado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Nominas">
+      <EntityTypeMapping TypeName="NomiProModel.Nomina">
+        <MappingFragment StoreEntitySet="Nomina">
+          <ScalarProperty Name="Aporte_Pension" ColumnName="Aporte_Pension" />
+          <ScalarProperty Name="Aporte_Salud" ColumnName="Aporte_Salud" />
+          <ScalarProperty Name="ID_Empleado" ColumnName="ID_Empleado" />
+          <ScalarProperty Name="Fecha_Final_Pago" ColumnName="Fecha_Final_Pago" />
+          <ScalarProperty Name="Fecha_Inicial_Pago" ColumnName="Fecha_Inicial_Pago" />
+          <ScalarProperty Name="Extras_Nocturnas" ColumnName="Extras_Nocturnas" />
+          <ScalarProperty Name="Extras_Diurnas" ColumnName="Extras_Diurnas" />
+          <ScalarProperty Name="Total_Horas_Laboradas" ColumnName="Total_Horas_Laboradas" />
+          <ScalarProperty Name="ID_Nomina" ColumnName="ID_Nomina" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

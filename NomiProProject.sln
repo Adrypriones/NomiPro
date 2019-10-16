@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.156
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NomiProProject", "NomiProProject\NomiProProject.csproj", "{192DAFC1-7E6C-44B4-B5A0-D52E1455B43C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{192DAFC1-7E6C-44B4-B5A0-D52E1455B43C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{192DAFC1-7E6C-44B4-B5A0-D52E1455B43C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{192DAFC1-7E6C-44B4-B5A0-D52E1455B43C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{192DAFC1-7E6C-44B4-B5A0-D52E1455B43C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0D70B5E2-FECB-4D98-B796-BE62B51A09C8}
+	EndGlobalSection
+EndGlobal

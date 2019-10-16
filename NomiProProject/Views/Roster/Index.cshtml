@@ -1,0 +1,176 @@
+﻿@using NomiProProject.Shared.Enums
+
+
+@{@model NomiProProject.ViewModel.NominaViewModel
+
+
+ViewBag.Title = "Index";
+}
+
+<body>
+    <section>
+        <div class="container-fluid">
+            <div class="page-header">
+                <h1 class="text-titles"><i class="zmdi zmdi-calendar-note"></i> Nómina <small>NomiPro</small></h1>
+
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Numero_Documento)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Numero_Documento)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Nombre)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Apellido)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Apellido)
+
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Salario_Basico)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Salario_Basico)
+
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Cargo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Cargo)
+
+                </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Jornada)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Jornada)
+
+                </dd>
+            </dl>
+        </div>
+
+        <div class="panel-body" style="overflow-y:scroll; height:340px">
+            @using (Html.BeginForm("Guardar", "Roster", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+
+                <div class="panel panel-success">
+                    <div class="panel-heading" style="color:#000000">
+                        <h3 class="panel-title"><i class="zmdi zmdi-calendar-note"></i> &nbsp; Devengado</h3>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-6">
+                    <div class="form-group label-floating">
+                        @Html.LabelFor(model => model.Fecha_Inicial_Pago, htmlAttributes: new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.Fecha_Inicial_Pago, new { @class = "form-control", required = "required", @type = "Date" })
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <div class="form-group label-floating">
+                        @Html.LabelFor(model => model.Fecha_Final_Pago, htmlAttributes: new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.Fecha_Final_Pago, new { @class = "form-control", required = "required", @type = "Date" })
+                    </div>
+                </div>
+
+
+                <div class="row">
+
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="form-group label-floating">
+                            @Html.LabelFor(model => model.Extras_Diurnas, htmlAttributes: new { @class = "control-label" })
+                            @Html.TextBoxFor(model => model.Extras_Diurnas, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="form-group label-floating">
+                            @Html.LabelFor(model => model.Extras_Nocturnas, htmlAttributes: new { @class = "control-label" })
+                            @Html.TextBoxFor(model => model.Extras_Nocturnas, new { @class = "form-control" })
+                        </div>
+
+                        <div class="col-xs-12 col-sm-6">
+                            <div class="form-group text-left">
+                                @Html.LabelFor(model => model.Total_Horas_Laboradas, htmlAttributes: new { @class = "control-label" })
+                                @Html.TextBoxFor(model => model.Total_Horas_Laboradas, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="col-xs-12 col-sm-offset-3">
+                            <div class="form-group label-floating">
+                                @Html.LabelFor(model => model.AuxilioTransporte, htmlAttributes: new { @class = "control-label" })
+                                @Html.TextBoxFor(model => model.AuxilioTransporte, new { @class = "form-control" })
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="panel panel-success">
+                        <div class="panel-heading" style="color:#000000">
+                            <h3 class="panel-title"><i class="zmdi zmdi-male-female"></i> &nbsp; Deduciones</h3>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="form-group label-floating">
+                            @Html.LabelFor(model => model.Aporte_Salud, htmlAttributes: new { @class = "control-label" })
+                            @Html.TextBoxFor(model => model.Aporte_Salud, new { @class = "form-control" })
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="form-group label-floating">
+                            @Html.LabelFor(model => model.Aporte_Pension, htmlAttributes: new { @class = "control-label" })
+                            @Html.TextBoxFor(model => model.Aporte_Pension, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <div class="margin-top: 20px">
+                        <input type="submit" value="Guardar" class="btn btn-primary btn-raised btn-sm" />
+                    </div>
+                </div>
+
+                if (!string.IsNullOrEmpty(@ViewBag.Error))
+                {
+                    <div class="alert alert-danger" style="color:#000000" align="center">
+                        <strong>@ViewBag.Error</strong>
+                    </div>
+                }
+
+                <a href="@Url.Action("ListEmployee", "Employee")" class="btn btn-info" style="color:#000000">
+                    <i class="zmdi zmdi-arrow-left"></i> &nbsp; Volver
+                </a>
+
+                @Html.HiddenFor(model => model.ID_Empleado)
+            }
+        </div>
+
+        
+    </section>
+</body>
+
